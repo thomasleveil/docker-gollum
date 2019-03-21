@@ -1,0 +1,12 @@
+version: "3.6"
+services:
+  gollum:
+    build: .
+    user: ${UID:?Environement variable UID must be exported}:${GID:?Environement variable GID must be exported}
+    volumes:
+      - ./wiki:/wiki
+    expose:
+      - 8080
+    labels:
+      traefik.enable: "true"
+      traefik.port: "8080"
